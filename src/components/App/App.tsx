@@ -10,7 +10,7 @@ const App: React.FC = () => {
   return (
     <main className="App">
       <div className="d-flex flex-row align-items-center justify-content-between">
-        <h1 className="p-3">🎛 knobify</h1>
+        <h1 className="p-4">🎛 knobify</h1>
         <div className="p-3 float-right">
           <small className="text-muted m-1">powered by </small>
           <img src="spotify.png" style={{ height: '70px' }} />

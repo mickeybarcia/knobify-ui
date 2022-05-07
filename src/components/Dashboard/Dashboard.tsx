@@ -110,8 +110,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      <div className="row justify-content-center">
-        <div className="col-md-3">
+      <div className="d-flex justify-content-center">
+        <div className="col-md-3 p-3">
           <RecommendationsSettings
             onChangeSettings={handleChangeSettings}
             settings={recommendationsSettings}
@@ -119,7 +119,7 @@ const Dashboard: React.FC = () => {
           <br />
         </div>
 
-        <div className="col-md-3">
+        <div className="col-md-3 p-3">
           <ArtistList
             onAddArtist={handleAddArtist}
             onRemoveArtist={handleRemoveArtist}
@@ -134,7 +134,7 @@ const Dashboard: React.FC = () => {
           <br />
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-4 p-3">
           <Spinner isLoading={loading} />
           <ErrorBanner message={message} />
           {!loading && (
