@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
   }, [seedArtists, recommendationsSettings, seedTracks]);
 
   const handleChangeSettings = async (newSettings: RecommendationsQuerySettings) => {
-    if (newSettings !== recommendationsSettings) setRecommendationsSettings(newSettings);
+    setRecommendationsSettings(newSettings);
   };
 
   const handleAddArtist = async (artist: Artist) => {

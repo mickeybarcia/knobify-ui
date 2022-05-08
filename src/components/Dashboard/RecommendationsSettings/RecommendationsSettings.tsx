@@ -21,7 +21,12 @@ const validation = Yup.object().shape({
   max_danceability: zeroToOneFieldValidation,
   min_instrumentalness: zeroToOneFieldValidation,
   max_instrumentalness: zeroToOneFieldValidation,
-  excludeLiked: Yup.boolean().required()
+  min_valence: zeroToOneFieldValidation,
+  max_valence: zeroToOneFieldValidation,
+  min_popularity: Yup.number().min(0).max(100).required(),
+  max_popularity: Yup.number().min(0).max(100).required(),
+  excludeLiked: Yup.boolean().required(),
+  excludeRecent: Yup.boolean().required()
 });
 
 const RecommendationsSettings: React.FC<Props> = ({ onChangeSettings, settings }) => {
@@ -34,6 +39,11 @@ const RecommendationsSettings: React.FC<Props> = ({ onChangeSettings, settings }
     max_danceability: settings.max_energy || 1,
     min_instrumentalness: settings.min_instrumentalness || 0,
     max_instrumentalness: settings.max_instrumentalness || 1,
+    min_valence: settings.min_valence || 0,
+    max_valence: settings.max_valence || 1,
+    min_popularity: settings.min_popularity || 0,
+    max_popularity: settings.max_popularity || 100,
+    excludeRecent: settings.excludeRecent || false,
     excludeLiked: settings.excludeLiked || false
   };
 
@@ -60,12 +70,24 @@ const RecommendationsSettings: React.FC<Props> = ({ onChangeSettings, settings }
               <SettingsRow setting={'max_danceability'} settingLabel={'max danceability'} />
               <SettingsRow setting={'min_instrumentalness'} settingLabel={'min instrumentalness'} />
               <SettingsRow setting={'max_instrumentalness'} settingLabel={'max instrumentalness'} />
+              <SettingsRow setting={'min_valence'} settingLabel={'min valence'} />
+              <SettingsRow setting={'max_valence'} settingLabel={'max valence'} />
+              <br />
+
+              <small className="text-muted">set between 0 and 100</small>
+              <SettingsRow setting={'min_popularity'} settingLabel={'min popularity'} />
+              <SettingsRow setting={'max_popularity'} settingLabel={'max popularity'} />
               <br />
 
               <small className="text-muted">filter results</small>
               <SettingsRow
                 setting={'excludeLiked'}
                 settingLabel={'exclude liked songs'}
+                isCheckBox={true}
+              />
+              <SettingsRow
+                setting={'excludeRecent'}
+                settingLabel={'exclude recent songs'}
                 isCheckBox={true}
               />
               <br />

@@ -4,8 +4,6 @@ export type RecommendationsQuery = RecommendationsQuerySettings & {
 };
 
 export type RecommendationsQuerySettings = {
-  limit?: number; // 1-100
-
   // -- 0-1 -- //
   min_energy?: number;
   max_energy?: number;
@@ -19,8 +17,15 @@ export type RecommendationsQuerySettings = {
   max_instrumentalness?: number;
   min_instrumentalness?: number;
 
+  max_valence?: number;
+  min_valence?: number;
+
+  // -- 0-100 --//
+  max_popularity?: number;
+  min_popularity?: number;
+
   // added fields
-  excludeDays?: number;
+  excludeRecent?: boolean;
   excludeLiked?: boolean;
 };
 
