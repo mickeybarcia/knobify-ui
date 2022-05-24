@@ -1,4 +1,5 @@
-# knobify - formulate the perfect playlist
+# knobify 
+## formulate the perfect playlist
 https://knobify-ui.herokuapp.com/ (note using free tier so will take a second for UI and first backend request to load)
 
 Login with your spotify account and choose the artists, songs, settings and filters you want to make a playlist. Select a song and the playlist will play in your spotify player.
@@ -13,13 +14,13 @@ Login with your spotify account and choose the artists, songs, settings and filt
     - redirects you to the Spotify authorize page where you accept the auth scopes for access to your library, listening history, player, etc
 - you're redirected to redirect backend endpoint where
     - the state cookie is compared to the state param in the redirect url
-    - the spotify access and refresh tokens are saved in the Redis cache
+    - the Spotify access and refresh tokens are saved in the Redis cache to be used when the backend hits the Spotify API
     - the knobify refresh token is saved in a cookie
     - you are redirected to the main UI page
 - you do something on the frontend that hits the backend without an access token which
     - yields a forbidden error that is caught
     - triggers a call to the refresh token endpoint
-    - returns an access token to use for future requests (until it expires)
+    - returns an access token to use for future requests to the backend (until it expires)
 
 
 ## tools used
