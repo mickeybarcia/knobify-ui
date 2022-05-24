@@ -10,7 +10,7 @@ import TrackList from './TrackList';
 
 const NO_RESULTS_MESSAGE = 'no results found.. try adding more seed artists or tracks';
 const RECOMMENDATIONS_ERROR =
-  'error loading recommendations.. you must select at least one seed artist or track';
+  'error loading recommendations.. make sure you select at least one seed artist or track';
 const SEED_COUNT_ERROR = 'you must choose between 1 and 5 seed artists and tracks in total';
 const PLAY_TRACK_ERROR =
   'unable to play track.. make sure you have an active device playing spotify';

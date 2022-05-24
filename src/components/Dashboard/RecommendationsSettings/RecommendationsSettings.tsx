@@ -87,7 +87,7 @@ const RecommendationsSettings: React.FC<Props> = ({ onChangeSettings, settings }
               />
               <SettingsRow
                 setting={'excludeRecent'}
-                settingLabel={'exclude recent songs'}
+                settingLabel={'exclude recent listens'}
                 isCheckBox={true}
               />
               <br />
