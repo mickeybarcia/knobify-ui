@@ -1,6 +1,7 @@
 # knobify 
 ## formulate the perfect playlist
 https://knobify-ui.herokuapp.com/ (note using free tier so will take a second for UI and first backend request to load)
+(I will also need to add your Spotify email in the Spotify Developer portal so that you can use this app)
 
 Login with your spotify account and choose the artists, songs, settings and filters you want to make a playlist. Select a song and the playlist will play in your spotify player.
 
