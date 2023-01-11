@@ -16,6 +16,7 @@ const PLAY_TRACK_ERROR =
   'unable to play track.. make sure you have an active device playing spotify';
 
 const Dashboard: React.FC = () => {
+  const [currentSongIntervalId, setCurrentSongIntervalId] = useState<number | null>(null);
   const [message, setMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [seedArtists, setSeedArtists] = useState<Artist[]>([]);
@@ -94,7 +95,22 @@ const Dashboard: React.FC = () => {
     setSeedTracks(newTracks);
   };
 
+  const startCurrentSongChecking = () => {
+    var timesIntervalRan = 0;
+    if (currentSongIntervalId) clearInterval(currentSongIntervalId) 
+    var intervalId = window.setInterval(async function() {
+      const { data: { track } } = await KnobifyApi.getCurrentSong();
+      setCurrentlyPlaying(track)
+      if (++timesIntervalRan === 30) {
+        window.clearInterval(intervalId);
+        setCurrentSongIntervalId(null)
+    }
+    }, 2000);
+    setCurrentSongIntervalId(intervalId)
+  }
+
   const handlePlayTrack = async (track: Track) => {
+    startCurrentSongChecking();
     try {
       setCurrentlyPlaying(track);
       const uris = trackResults.map(({ playUri }) => playUri);

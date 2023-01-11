@@ -75,12 +75,18 @@ const playTracks = async (uris: string[]) => {
   return instance.get(SPOTIFY_PATH + '/playTracks', { params: { uris: uris.join(',') } });
 };
 
+const getCurrentSong = async () => {
+  return instance.get(SPOTIFY_PATH + '/currentPlayingSong');
+};
+
+
 const KnobifyApi = {
   refreshToken,
   getRecommendations,
   searchArtists,
   searchTracks,
-  playTracks
+  playTracks,
+  getCurrentSong
 };
 
 export default KnobifyApi;
